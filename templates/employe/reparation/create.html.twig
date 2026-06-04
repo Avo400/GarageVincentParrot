@@ -1,0 +1,30 @@
+{% extends 'employe/base_employe.html.twig' %}
+
+{% form_theme formReparation 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+ 
+        <h2>Enregistrer une reparation</h2> 
+
+{{ form_start(formReparation) }}
+{{form_row(formReparation.code, {
+    'attr': {
+        'placeholder': "7845AS"
+    }
+})}}
+{{form_row(formReparation.prixMoyen, {
+    'attr': {
+        'placeholder': "Prix moyen"
+    }
+})}}
+{{form_row(formReparation.nomReparation, {
+    'attr': {
+        'placeholder': "Nom de la réparation"
+    }
+})}}
+
+<button type="submit" class="btn btn-success">
+            Enregistrer la reparation
+</button>
+{{ form_end(formReparation) }}
+
+{% endblock %}

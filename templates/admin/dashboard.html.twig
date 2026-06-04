@@ -1,0 +1,58 @@
+{% extends 'admin/base_admin.html.twig' %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row mt-4">
+         <div class="col-md-4 mb-4">
+            <div class="card shadow">
+                <div class="card-body text-center p-4">
+                    <h2> Disponibilité du garage</h2>
+                    <p> Le garage est-il ouvert ? </p>
+                    
+                {% if garage.isOpen %}
+                        <a href="{{ path('admin_isopen') }}"
+                        class="btn btn-success">
+                            Oui
+                        </a>
+                {% else %}
+                        <a href="{{ path('admin_isopen') }}"
+                        class="btn btn-danger">
+                            Non
+                        </a>
+                {% endif %}
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card shadow">
+                <div class="card-body text-center p-4">
+                    <h2> Comptes</h2>
+                    <p> Gérer les utilisateurs du site </p>
+                    <a href="{{ path('admin_comptes') }}" class="btn btn-primary">
+                        Gérer les comptes
+                    </a>
+                </div>
+            </div>
+        </div>
+                    
+    <div class="col-md-4 mb-4">
+        <div class="card shadow">
+            <div class="card-body text-center p-4">
+                <h2> Données</h2>
+                <p> Gérer les véhicules, les avis ou les réparations  </p>
+                <a href="{{ path('admin_donnees') }}" class="btn btn-primary">
+                    Gérer les données
+                </a>
+            </div>
+        </div> 
+    </div>
+
+     
+            
+    </div>
+</div>
+
+{% endblock %}

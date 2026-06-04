@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+{% form_theme formVehicule 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+  {% if isEditMode %}
+        <h2> Modifier un vehicule </h2>
+  {% else %}
+        <h2>Enregistrer un vehicule</h2> 
+  {% endif %}
+{{ form_start(formVehicule) }}
+{{form_row(formVehicule.libelle, {
+    'attr': {
+        'placeholder': "Renault clio"
+    }
+})}}
+{{form_row(formVehicule.imageFile)}}
+{{form_row(formVehicule.immatriculation, {
+    'attr': {
+        'placeholder': "DC450EF"
+    }
+})}}
+{{form_row(formVehicule.prix, {
+    'attr': {
+        'placeholder': "4000"
+    }
+})}}
+{{form_row(formVehicule.anneeMiseEnCirculation, {
+    'attr': {
+        'placeholder': "2004"
+    }
+})}}
+{{form_row(formVehicule.kms, {
+    'attr': {
+        'placeholder': "150000"
+    }
+})}}
+{{form_row(formVehicule.estDisponible, {
+    'attr': {
+        'placeholder': "Image du véhicule"
+    }
+})}}
+{{form_row(formVehicule.user, {
+    
+})}}
+
+
+<button type="submit" class="btn btn-success">
+    {% if isEditMode %}
+        Modifier un vehicule
+    {% else %}
+         Enregistrer le vehicule
+    {% endif %} 
+</button>
+{{ form_end(formVehicule) }}
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'admin/base_admin.html.twig' %}
+
+{% block body %}
+  
+  <section class="container mt-5">
+        <div class="col-md-8 mx-auto">
+                        <h2> Modifier un utilisateur </h2>
+                
+                {{ form_start(formUser) }}
+                        {{ form_row(formUser.email) }}
+                        {{ form_row(formUser.roles) }}
+                        {{ form_row(formUser.lastname) }}
+                        {{ form_row(formUser.firstname) }}
+                        {{ form_row(formUser.address) }}
+                        {{ form_row(formUser.zipcode) }}
+                        {{ form_row(formUser.city) }}
+                        <button type="submit" class="btn btn-success">
+                        Modifier l'utilisateur
+                        </button>
+              {{ form_end(formUser) }}
+        </div>
+ </section>
+{% endblock %}
+
+

@@ -1,0 +1,24 @@
+ <div class="vehicle-card">
+                <div class="details">      
+                  <div class="thumb-gallery">
+                    <img class="first" src="{{ vich_uploader_asset(vehicule, 'imageFile')}}">
+                  </div>
+                  <div class="info">
+                        <h3 style="margin-top: 30px;"> {{ vehicule.libelle }} </h3>
+                        <div class="price">
+                            <span>Prix :</span>
+                            <h4>{{ vehicule.prix }} €</h4>
+                        </div>
+                        <div class="ctas">
+
+                          {# {% set currentVehiculeService = setCurrentVehicule({{ vehicule }}) %} #}
+                          <div style="clear:both;"></div>
+                        </div>
+                        <div class="desc">
+                          <p style="font-weight: bold;">Infos :</p>
+                          <p>Année de mise en circulation: {{ vehicule.anneeMiseEnCirculation }} </p>
+                          <p>Mail du propriétaire : {{ vehicule.user.email }} </p>
+                        </div>
+                   </div> 
+                </div>
+   </div>

@@ -1,0 +1,54 @@
+{% extends 'admin/base_admin.html.twig' %}
+
+{% block body %}
+<h1> Données</h1>
+
+<div class="container">
+    <div class="row mt-4">
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow">
+                        <div class="card-body text-center p-4">
+                            <h2> Véhicules</h2>
+                            <p> Gérer la liste des véhicules </p>
+                            <a href="{{ path('admin_vehicules') }}" class="btn btn-primary">
+                                Liste des véhicules
+                            </a>
+                        </div>
+                    </div> 
+                </div>
+                <div class="col-md-4 mb-4">
+                        <div class="card shadow">
+                            <div class="card-body text-center p-4">
+                                <h2> Réparations</h2>
+                                <p> Gérer la liste des réparations </p>
+                                <a href="{{ path('admin_reparation') }}" class="btn btn-primary">
+                                    Liste des réparations
+                                </a>
+                            </div>
+                        </div> 
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow">
+                        <div class="card-body text-center p-4">
+                            <h2> Avis</h2>
+                            <p> Gérer la liste des avis </p>
+                            <a href="{{ path('admin_avis') }}" class="btn btn-primary">
+                                Liste des avis
+                            </a>
+                        </div>
+                    </div> 
+                </div>
+                 <div class="col-md-4 mb-4">
+                    <div class="card shadow">
+                        <div class="card-body text-center p-4">
+                            <h2> Contact</h2>
+                            <p> Gérer la liste des messages de contact </p>
+                            <a href="{{ path('admin_contact') }}" class="btn btn-primary">
+                                Liste des messages
+                            </a>
+                        </div>
+                    </div> 
+                </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends 'admin/base_admin.html.twig' %}
+
+{% block body %}
+  <div class="card bg-dark text-white shadow">
+
+        <div class="card-body">
+
+            <h2 class="card-title mb-4">
+                Détails utilisateur
+            </h2>
+
+            <table class="table table-dark">
+                <tr>
+                    <th>Email</th>
+                    <th>Rôle</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Adresse</th>
+                    <th>Code postal</th>
+                    <th>Ville</th>
+                </tr>
+                <tr>
+                   <td> {{user.email}} </td> 
+                   <td> 
+                        {% if user.roles[0] == 'ROLE_ADMIN' %}
+                                Administrateur
+                        {% elseif user.roles[0] == 'ROLE_EMPLOYE' %}
+                                Employé
+                        {% else %}
+                                Utilisateur
+                        {% endif %}
+                    </td> 
+                   <td> {{user.lastname}} </td> 
+                   <td> {{user.firstname}} </td> 
+                   <td> {{user.address}} </td> 
+                   <td> {{user.zipcode}} </td> 
+                   <td> {{user.city}} </td> 
+                </tr>
+              
+                
+            </table>
+
+        </div>
+
+</div>
+
+
+
+    {% if searchEmail %}
+        <a class="btn btn-primary" 
+           href="{{ path('admin_comptes', {'searchEmail': searchEmail}) }}">
+           Retour aux résultats de recherche
+        </a>
+
+    {% else %}
+        <a class="btn btn-primary" 
+           href="{{ path('admin_comptes') }}">
+           Retour à la liste des utilisateurs
+        </a>
+
+    {% endif %}
+
+{% endblock %}

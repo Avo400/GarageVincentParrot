@@ -1,0 +1,47 @@
+{{ form_start(form, {attr: {class: 'filter js-filter-form'}}) }}
+
+<h4 style="color: white;"> Prix (en €)</h4>
+<div class="row">
+        <div class="col-md-6">
+    {{ form_row(form.minPrice) }}
+    </div>
+    <div class="col-md-6">
+    {{ form_row(form.maxPrice) }}
+    </div>
+</div>
+<div id="price-slider" data-min="{{ minPrice }}" data-max="{{ maxPrice }}" style="margin-bottom: 3rem;">
+  
+</div>
+
+
+
+<h4 style="color: white;"> Kilométrage (en km) </h4>
+<div class="row">
+    <div class="col-md-6">
+    {{ form_row(form.minKms) }}
+    </div>
+    <div class="col-md-6">
+    {{ form_row(form.maxKms) }}
+    </div>
+</div>
+<div id="kms-slider" data-min="{{ minKms }}" data-max="{{ maxKms }}" style="margin-bottom: 3rem;">
+
+</div>
+
+<h4 style="color: white;"> Années </h4>
+<div class="row">
+    <div class="col-md-6">
+    {{ form_row(form.minYear) }}
+    </div>
+    <div class="col-md-6">
+    {{ form_row(form.maxYear) }}
+    </div> 
+</div>
+<div id="year-slider"  data-min="{{ minYear }}" data-max="{{ maxYear }}" style="margin-bottom: 3rem;">
+
+</div>
+
+<button class="btn btn-primary w-100"> <a href="{{ path('app_vehicule_utilisateur')}}"> Réinitialiser les filtres </a> </button>
+
+
+{{ form_end(form) }}

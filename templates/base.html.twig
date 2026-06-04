@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+       <link rel="stylesheet" href="https://bootswatch.com/5/darkly/bootstrap.min.css">
+            
+            {% block stylesheets %}
+                  {{ encore_entry_link_tags('app') }}
+            {% endblock %}
+
+            {% block javascripts %}
+                {{ encore_entry_script_tags('app') }}
+
+                <!-- Renders app.js & a webpack runtime.js file
+                    <script src="/build/runtime.js" defer></script>
+                    <script src="/build/app.js" defer></script>
+                    See note below about the "defer" attribute -->
+            {% endblock %}
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+            {# {{ encore_entry_link_tags('app') }}
+            {{ encore_entry_script_tags('app') | replace('src=', 'defer src=') | raw}} #}     
+    </head>
+       
+
+     
+   
+    <body>
+           
+{% block navbar %}  {% endblock %}
+
+  {% for message in app.flashes('success') %}
+          <div class="container mt-3">
+              <div class="alert alert-success alert-dismissible fade show" role="alert">
+                  {{ message }}
+                  <button type="button"
+                          class="btn-close"
+                          data-bs-dismiss="alert"
+                          aria-label="Close">
+                  </button>
+              </div>
+          </div>
+    {% endfor %}
+
+
+    
+        <div class="container">
+            {% block body %}
+            
+            {% endblock %}
+         </div>
+
+         <!-- Remove the container if you want to extend the Footer to full width. -->
+<div class="container my-5 d-flex flex-column min-vh-100">
+
+  <!-- Footer -->
+  <footer class="mt-auto"
+          class="text-center text-lg-start text-white"
+          style="background-color: #1c2331"
+          >
+    <!-- Section: Social media -->
+    <section
+             class="d-flex justify-content-between p-4"
+             style="background-color: ##375a7f"
+             >
+      <!-- Left -->
+      <div class="me-5">
+        <h2>Infos pratiques </h2>
+      </div>
+      <!-- Left -->
+
+      <!-- Right -->
+     
+      <!-- Right -->
+    </section>
+    <!-- Section: Social media -->
+
+    <!-- Section: Links  -->
+    <section class="">
+      <div class="container text-center text-md-start mt-5">
+        <!-- Grid row -->
+        <div class="row mt-3">
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+            <!-- Content -->
+            <h6 class="text-uppercase fw-bold">Horaires d'ouverture du garage :</h6>
+            <hr
+                class="mb-4 mt-0 d-inline-block mx-auto"
+                style="width: 60px; background-color: #7c4dff; height: 2px"
+                />
+           
+                <p> Du lundi au vendredi : 08 :45 – 12 :00, 14 :00 - 18 :00</p>
+                <p> Samedi : 08 :45 – 12 :00</p>
+                <p> Dimanche : fermé </p>
+               
+               {% if etat.isOpen == true %}
+                  <p>> Le garage est actuellement ouvert. </p>
+                {% else %}
+                  <p> Le garage est actuellement fermé. </p>
+                {% endif %} 
+
+           
+          </div>
+          <!-- Grid column -->
+         
+          
+          <!-- Grid column -->
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold">Contact</h6>
+            <hr
+                class="mb-4 mt-0 d-inline-block mx-auto"
+                style="width: 60px; background-color: #7c4dff; height: 2px"
+                />
+            <p>Adresse : 11 rue d'Arles, 31500 Toulouse</p>
+            <p>E-mail : garagevincentparrot@gmail.com</p>
+            <p> Tél : 04 50 87 64 55</p>
+          </div>
+          <!-- Grid column -->
+        </div>
+        <!-- Grid row -->
+      </div>
+    </section>
+    <!-- Section: Links  -->
+
+    <!-- Copyright -->
+    <div
+         class="text-center p-3"
+         style="background-color: rgba(0, 0, 0, 0.2)"
+         >
+      © 2020 Copyright:
+      <a class="text-white" href="https://mdbootstrap.com/"
+         >MDBootstrap.com</a
+        >
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
+
+</div>
+<!-- End of .container -->
+    </body>
+</html>

@@ -1,0 +1,97 @@
+{% extends 'employe/base_employe.html.twig' %}
+
+{% block title %}Comptes{% endblock %}
+
+{% block body %}
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+            {% if app.request.query.get('searchEmail') %}
+                <h3>
+                    Résultats de recherche :
+                    {{ users|length }}
+
+                    {% if users|length <= 1 %}
+                        compte trouvé
+                    {% else %}
+                        comptes trouvés
+                    {% endif %}
+                </h3>
+
+            {% else %}
+                <h1>Comptes utilisateurs </h1>
+            {% endif %}
+
+            <a href="{{ path('employe_create_user') }}"
+            class="btn btn-primary">
+                Créer un compte
+            </a>
+    </div>
+
+
+            <form method="GET">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <input
+                        type="text"
+                        id="searchEmail"
+                        name="searchEmail"
+                        class="form-control"
+                        placeholder="Rechercher par email"
+                    />
+                    <button class="btn btn-primary" type="submit"> Rechercher </button>
+                </div>
+            </form>
+
+
+
+        <table class="table table-hover">
+            <tr class="table-dark">
+                <td> Email </td>
+                <td>Rôle</td>
+                <td> Informations </td>
+            </tr>
+        {% for user in users %} 
+
+                <tr class="table-secondary">
+                    <td> {{ user.email }}</td>
+                     
+                        <td>
+                            {% for role in user.roles %}
+                                {% if role == 'ROLE_ADMIN' %}
+                                    Administrateur
+                                {% elseif role == 'ROLE_USER' %}
+                                    Utilisateur
+                                {% elseif role == 'ROLE_EMPLOYE' %}
+                                Employé
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+
+                     <td>
+                        <a class="btn btn-primary" 
+                            href="{{ path('employe_show_user',
+                                    {
+                                        'id': user.id,
+                                        'searchEmail': searchEmail
+                                    }
+                                    ) }}">
+                                Détails
+                        </a>
+                      </td>
+
+                     
+                  
+                 
+                    
+               </tr>    
+        {% endfor %}
+
+</table>
+{% if app.request.query.get('searchEmail') %}
+    <a href="{{ path('employe_comptes') }}"
+       class="btn btn-secondary">
+        Retour à la liste des comptes
+    </a>
+{% endif %}
+
+
+{% endblock %}

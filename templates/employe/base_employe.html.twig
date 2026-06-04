@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Employé{% endblock %}
+
+{% block navbar %}
+
+<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+    <div class="container-fluid">
+
+        <a class="navbar-brand" href="#">
+            Garage Vincent Parrot
+        </a>
+
+        <div class="collapse navbar-collapse">
+
+            <ul class="navbar-nav me-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('main') }}">
+                        Accueil
+                    </a>
+                </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('employe_dashboard') }}">
+                            Espace employé
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('employe_comptes') }}">
+                            Comptes
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('employe_donnees') }}">
+                            Données
+                        </a>
+                    </li>
+
+
+            </ul>
+
+            <div class="d-flex align-items-center">
+
+                {% if app.user %}
+
+                    <span class="text-white me-3">
+
+                        Connecté :
+                        {{ app.user.email }}
+
+                            | Statut : Employé
+                    </span>
+
+                {% endif %}
+
+                <a href="{{ path('app_logout') }}"
+                   class="btn btn-outline-light">
+                    Se déconnecter
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+</nav>
+
+{% endblock %}
+
+{% block body %}{% endblock %}

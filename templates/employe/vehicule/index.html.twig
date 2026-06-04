@@ -1,0 +1,50 @@
+{% extends 'employe/base_employe.html.twig' %}
+
+{% block title %}Liste des véhicules{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+
+    <h1> Liste des véhicules </h1>
+    <a class="btn btn-primary" href="{{ path('employe_vehicule_create') }}" style="text-decoration: none;">
+         Ajouter un véhicule
+    </a> 
+
+
+<table class="table table-hover">
+   
+    <tr class="table-dark">
+      <td> Libelle</td>
+      <td>Immatriculation</td>
+      <td>Prix </td>
+      <td>anneeMiseEnCirculation </td>
+      <td>Kilométrage </td>
+      <td>Est-il disponible ? </td>
+      <td>Mail propriétaire </td>
+      <td> Modifier le véhicule </td>
+    </tr>
+    {% for vehicule in vehicules %} 
+        <tr class="table-secondary">
+             <td> {{ vehicule.libelle }}</td>
+             <td>  {{ vehicule.immatriculation }}  </td>
+             <td> {{ vehicule.prix }} €  </td>
+             <td> {{ vehicule.anneeMiseEnCirculation }} </td>
+             <td> {{ vehicule.kms }} km </td>
+            {% if vehicule.estDisponible  == 1 %}
+                <td> Oui </td>
+            {% else %}
+                <td> Non </td>
+            {% endif %}
+            <td> {{ vehicule.user.email }}</td>
+            <td>  <a class="btn btn-primary" href="{{ path('employe_vehicule_edit', {'id': vehicule.id}) }}" style="text-decoration: none;"> Modifier </a>  </td>
+             
+
+        </tr>    
+    {% endfor %}
+
+</table>
+{% endblock %}

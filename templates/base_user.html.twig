@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block navbar %}
+            <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Garage Vincent Parrot</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('main') }}">Accueil</a>
+                    </li>
+
+                    {% if is_granted('ROLE_ADMIN') %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('admin_dashboard') }}">
+                                    Espace admin
+                                </a>
+                            </li>
+                    {% endif %}
+
+                    {% if is_granted('ROLE_EMPLOYE') and not is_granted('ROLE_ADMIN') %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('employe_dashboard') }}">
+                                    Espace employé
+                                </a>
+                            </li>
+                    {% endif %}
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_vehicule_utilisateur') }}">Vente</a>
+                    </li>
+
+                {% if is_granted('ROLE_USER')
+                    and not is_granted('ROLE_EMPLOYE')
+                    and not is_granted('ROLE_ADMIN') %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('contact_create') }}">Contact</a>
+                    </li>
+                {% endif %}   
+                                            
+                 </ul>
+                <form class="d-flex">
+                
+                {% if app.user %}
+                    <div class="d-flex align-items-center">
+
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <span class="text-white me-3">
+                                Connecté :
+                                {{ app.user.email }}
+                                | Statut : Admin
+                            </span>
+
+                        {% elseif is_granted('ROLE_EMPLOYE') %}
+                            <span class="text-white me-3">
+                                Connecté :
+                                {{ app.user.email }}
+                                | Statut : Employé
+                            </span>
+                        {% endif %}
+
+                        <a class="btn btn-outline-light me-2"
+                        href="{{ path('app_logout') }}">
+                            Se déconnecter
+                        </a>
+
+                    </div>
+
+                {% else %}
+                            <a 
+                                class="form-control me-sm-2"
+                                href="{{ path('app_login') }}">
+                                Se connecter 
+                            </a>  
+
+                            <a 
+                                class="btn btn-secondary my-2 my-sm-0" type="submit"
+                                href="{{ path('app_register') }}"> 
+                                S'inscrire
+                            </a>
+                {% endif %}
+                </form>
+
+                </div>
+            </div>
+        </nav>
+{% endblock %}
+
+   
+{% block body %}{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<section class="aviss">
+
+        <article>
+            <h2> Utilisateur: </h2>
+            <h3>{{avis.user.email}} </h2>
+            <h3> Note: </h3>
+            <div>{{avis.note}} sur 5 </div>
+            <h3> Titre : </h3>
+            <div> {{avis.titre}} </div>
+            <h3> Contenu du message : </h3>
+            <div> {{avis.contenuMessageAvis}}</div>
+        </article>
+       
+
+</section>
+
+<button  class="btn btn-primary"> <a href="{{ path('main') }}" style="text-decoration: none;">Retourner à la page d'accueil </a> </button>
+{% endblock %}

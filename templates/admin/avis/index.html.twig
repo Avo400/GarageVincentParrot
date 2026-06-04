@@ -1,0 +1,58 @@
+{% extends 'admin/base_admin.html.twig' %}
+
+{% block body %}
+    <h2> Liste des avis</h2>
+   <div class="row">
+    {% for avis in aviss %}
+        <div class="col-md-6 col-lg-3 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+
+                    <div class="mb-2">
+                        {% for i in 1..5 %}
+                            {% if i <= avis.note %}
+                                <i class="fa fa-star text-warning"></i>
+                            {% else %}
+                                <i class="fa fa-star text-secondary"></i>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+
+                    <h5 class="card-title">{{ avis.titre }}</h5>
+
+                    <p class="card-text">
+                        {{ avis.contenuMessageAvis|slice(0, 100) }}
+                        {% if avis.contenuMessageAvis|length > 100 %}...{% endif %}
+                    </p>
+
+                    <small class="text-muted">
+                        {{ avis.user.email }}
+                    </small>
+
+                    <div class="mt-3">
+                        {% if avis.approved %}
+                            <a href="{{ path('admin_avis_approved', {'id': avis.id}) }}"
+                            class="btn btn-success">
+                                Avis validé
+                            </a>
+                        {% else %}
+                            <a href="{{ path('admin_avis_approved', {'id': avis.id}) }}"
+                            class="btn btn-danger">
+                                Avis non validé
+                            </a>
+                        {% endif %}
+                    </div>
+
+                    <div class="mt-3">
+                        <a href="{{ path('admin_avis_delete', {'id': avis.id}) }}">
+                            <i class="fa fa-trash text-danger"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+    
+{% endblock %}

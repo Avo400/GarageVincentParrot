@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<section class="aviss">
+
+        <article>
+            <h2>Id de la demande : {{demande.id}} </h2>
+            <div>{{demande.genreDemande}} sur 5 </div>
+            <div> {{demande.vehicule}} </div>
+            <div> {{demande.sujet}}</div>
+            <div> {{demande.contenuMessage}}</div>
+        </article>
+       
+
+</section>
+{% endblock %}

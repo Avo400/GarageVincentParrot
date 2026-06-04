@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+{% form_theme formContact 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+ {% if isEditMode %}
+        <h2> Modifier le formulaire</h2>
+{% else %}
+        <h2>Contacter le garage</h2>
+         
+    {% endif %}
+{{ form_start(formContact) }}
+
+  
+{#  {{form_row(formContact.user, {
+    'attr': {
+        'disabled':'disabled'
+    }
+})}}  
+ #}
+ {# {{form_row(formContact.titre, {
+    'attr': {
+        'placeholder': "Titre du message"
+    }
+})}}  #}
+
+
+{{form_row(formContact.message, {
+    'attr': {
+        'placeholder': "Contenu du message"
+    }
+})}}
+
+<button type="submit" class="btn btn-success">
+    {% if isEditMode %}
+        Modifier le contact
+    {% else %}
+         Envoyer le message
+    {% endif %}
+    
+    </button>
+{{ form_end(formContact) }}
+
+{% endblock %}

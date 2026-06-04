@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% form_theme formOuverture 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+        <h2> Modifier l'etat d'ouverture du garage </h2>
+{{ form_start(formOuverture) }}
+
+{{form_row(formOuverture.isOpen, {
+      'label' : 'Le garage est-il ouvert ?' 
+})}}
+
+<button type="submit" class="btn btn-success">
+            Valider 
+</button>
+{{ form_end(formOuverture) }}
+
+{% endblock %}

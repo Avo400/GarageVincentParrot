@@ -1,0 +1,43 @@
+{% extends 'employe/base_employe.html.twig' %}
+
+
+{% block title %}Espace employe{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 5px 6px; }
+</style>
+
+        <div class="container">
+            <div class="row mt-4">
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow">
+                        <div class="card-body text-center p-4">
+                            <h2> Comptes</h2>
+                            <p>Voir les utilisateurs du site </p>
+                            <a href="{{ path('employe_comptes') }}" class="btn btn-primary">
+                                Voir les comptes
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                                
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow">
+                        <div class="card-body text-center p-4">
+                            <h2> Données</h2>
+                            <p> Voir les véhicules, les avis ou les réparations  </p>
+                            <a href="{{ path('employe_donnees') }}" class="btn btn-primary">
+                                Gérer les données
+                            </a>
+                        </div>
+                    </div> 
+                </div>
+
+            
+                    
+            </div>
+        </div>
+
+{% endblock %}

@@ -1,0 +1,189 @@
+{% extends 'base_user.html.twig' %}
+
+{% block title %}Vente{% endblock %}
+
+{% block body %}
+<style>
+    
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+
+    
+ul{
+  margin: 0;
+  padding: 0;
+}
+ul li{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.container{
+  width: 840px;
+  margin: 0 auto;
+  height: 1300px;
+}
+.vehicle-card{
+  position: relative;
+  display: inline-block;
+  width: 240px;  
+  height: 300px;
+  overflow: visible;
+  z-index: 1;
+  border-radius: 2px;
+  margin: 0 20px 20px 0;
+}
+
+.vehicle-card:hover {
+  z-index: 2;
+  -webkit-transform: translate(0px, -10px);
+  transform: translate(0, -10px);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  -webkit-transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+
+.vehicle-card .details{
+  position: absolute;
+  height: 335px;
+  width: 240px;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3);
+}
+
+.vehicle-card .details:hover{
+  -webkit-transition: all .3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all .3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  height: 440px;
+  width: 240px;
+}
+.vehicle-card .info{
+  margin: 10px;
+}
+.vehicle-card .ctas{
+  margin: 10px 0;
+}
+.thumb-gallery{
+  height: 150px;
+}
+.thumb-gallery img{
+  position: absolute; 
+  width: 240px;
+}
+.thumb-gallery img.first{
+  opacity: 1;
+}
+.vehicle-card:hover .thumb-gallery img.second{
+  opacity: 0;
+  -webkit-transition: all .3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all .3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+/*styling*/
+.stars{
+  margin: 10px 0;
+}
+.star polygon {
+  fill: #E20000;
+}
+.vehicle-card h3{
+  margin: 0;
+  font-family: "Roboto Condensed", Helvetica, Arial, sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: -.5px;
+}
+.vehicle-card .price span{
+  font-family: "Helvetica", Arial, sans-serif;
+  color: #999;
+  font-size: .75rem;
+}
+.vehicle-card .price h4{
+  margin: 0;
+  font-family: "Roboto Condensed", Helvetica, Arial, sans-serif;
+  color: #222;
+  font-size: 1.25rem;
+}
+.vehicle-card .desc p{
+  color: #666;
+  font-size: 1rem;
+  line-height: 1.25rem;
+}
+
+.btn{
+  display: block;
+  padding: 0 10px;
+  float: left;
+  font-size: .75rem;
+  font-family: "Helvetica", Arial, sans-serif;
+  text-decoration: none;
+  height: 30px;
+  width: 100px;
+  text-align: center;
+  border-radius: 2px;
+  font-weight: bold;  
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
+}
+.primary{
+  background-color: #1383b3;
+  color: #fff;
+  margin-right: 10px;
+  line-height: 30px;
+}
+.secondary{
+  background-color: #fff;
+  color: #1383b3;
+  border: 2px solid #1383b3;  
+  line-height: 26px;
+
+}
+
+.pagination {
+  margin-top: 80px;
+} 
+
+.filter {
+  display: block;
+  top: 20px;
+
+  
+}
+
+#filtres {
+  margin: 100px auto;
+}
+
+#vehicules {
+  margin-bottom: 100px;
+}
+
+</style>
+    <h1> Acheter un véhicule d'occasion </h1>
+
+  <div class="container js-filter" style="color: black;">
+      <div class="row">
+            <div class="filter col-md-3" id="filtres">
+                {% include 'vehicule/_filter.html.twig' with {form: form, minPrice: minPrice, maxPrice: maxPrice, minKms: minKms, maxKms: maxKms, minYear: minYear, maxYear: maxYear} only %}
+            </div>
+            <div class="col-md-9">
+                    <div class="d-flex justify-content-end mb-2 js-filter-sorting">
+                        {% include "vehicule/_sorting.html.twig" %}
+                    </div>
+                    <div class="grid js-filter-content" id="vehicules">
+                        {% include "vehicule/_vehicules.html.twig" %}
+                   </div>
+                 {#   <div style="mt-4 js-filter-pagination">
+                      {% include "vehicule/_pagination.html.twig" %}
+                   </div> #}
+            </div>
+            </div>
+        </div>
+   </div>
+   
+{% endblock %}
+
+

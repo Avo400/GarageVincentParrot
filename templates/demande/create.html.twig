@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+{% form_theme formDemande 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+ {% if isEditMode %}
+        <h2> Modifier la demande </h2>
+{% else %}
+        <h2>Envoyer une demande</h2>
+         
+    {% endif %}
+{{ form_start(formDemande) }}
+{{form_row(formDemande.genreDemande, {
+    'attr': {
+        'placeholder': "Choisissez le genre de la demande"
+    }
+})}}
+
+{{form_row(formDemande.vehicule, {
+    'attr': {
+        'placeholder': "Choisissez le vehicule concerné"
+    }
+})}}
+{{form_row(formDemande.etatDemande, {
+    'attr': {
+        'placeholder': "Statut de la demande"
+    }
+})}}
+{{form_row(formDemande.sujet, {
+    'attr': {
+        'placeholder': "Sujet de la demande"
+    }
+})}}
+{{form_row(formDemande.contenuMessage, {
+    'attr': {
+        'placeholder': "Contenu du message"
+    }
+})}}
+<button type="submit" class="btn btn-success">
+    {% if isEditMode %}
+        Modifier la demande
+    {% else %}
+         Enregistrer la demande
+    {% endif %}
+    
+    </button>
+{{ form_end(formDemande) }}
+
+{% endblock %}

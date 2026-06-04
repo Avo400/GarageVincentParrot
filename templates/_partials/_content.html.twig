@@ -1,0 +1,27 @@
+ {% for vehicule in vehicules.data %} 
+              <div class="vehicle-card">
+                <div class="details">      
+                  <div class="thumb-gallery">
+                    <img class="first" src="{{ vich_uploader_asset(vehicule, 'imageFile')}}">
+                  </div>
+                  <div class="info">
+                        <h3 style="margin-top: 30px;"> {{ vehicule.libelle }} </h3>
+                        <div class="price">
+                            <span>Prix :</span>
+                            <h4>{{ vehicule.prix }} €</h4>
+                        </div>
+                        <div class="ctas">
+                          <a href="/vehicule/show/{{ vehicule.id }}" class="btn primary"> Détails</a>
+                          <a href="#" class="btn secondary"> Contacter  </a>
+                          <div style="clear:both;"></div>
+                        </div>
+                        <div class="desc">
+                          <p style="font-weight: bold;">Infos :</p>
+                          <p> Année de mise en circulation : {{ vehicule.anneeMiseEnCirculation }} </p>
+                          <p> Kilométrage : {{ vehicule.kms }} km </p>
+                        </div>
+                   </div> 
+                </div>
+              </div>
+        {% endfor %}
+       

@@ -1,0 +1,32 @@
+{% extends 'admin/base_admin.html.twig' %}
+
+{% block body %}
+
+    <section class="container mt-5">
+        <div class="row justify-content-center">
+                <div class="col-md-6">
+
+                    <h1>Créer un utilisateur</h1>
+
+                    {{ form_start(formUser) }}
+
+                    {{ form_row(formUser.email) }}
+                    {{ form_row(formUser.roles) }}
+                    {{ form_row(formUser.lastname) }}
+                    {{ form_row(formUser.firstname) }}
+                    {{ form_row(formUser.address) }}
+                    {{ form_row(formUser.zipcode) }}
+                    {{ form_row(formUser.city) }}
+                    {{ form_row(formUser.plainPassword) }}
+
+                    <button type="submit" class="btn btn-primary mt-3">
+                        Créer le compte
+                    </button>
+
+                    {{ form_end(formUser) }}
+
+                </div>
+        </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{% form_theme formReparation 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+  {% if isEditMode %}
+        <h2> Modifier une reparation </h2>
+  {% else %}
+        <h2>Enregistrer une reparation</h2> 
+  {% endif %}
+{{ form_start(formReparation) }}
+{{form_row(formReparation.code, {
+    'attr': {
+        'placeholder': "7845AS"
+    }
+})}}
+{{form_row(formReparation.prixMoyen, {
+    'attr': {
+        'placeholder': "Prix moyen"
+    }
+})}}
+{{form_row(formReparation.nomReparation, {
+    'attr': {
+        'placeholder': "Nom de la réparation"
+    }
+})}}
+
+<button type="submit" class="btn btn-success">
+    {% if isEditMode %}
+        Modifier une reparation
+    {% else %}
+         Enregistrer la reparation
+    {% endif %} 
+</button>
+{{ form_end(formReparation) }}
+
+{% endblock %}

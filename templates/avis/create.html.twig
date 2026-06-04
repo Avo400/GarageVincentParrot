@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+{% form_theme formAvis 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+ {% if isEditMode %}
+        <h2> Modifier le formulaire</h2>
+{% else %}
+        <h2>Laisser un avis </h2>
+         
+    {% endif %}
+{{ form_start(formAvis) }}
+
+  
+
+ 
+{{form_row(formAvis.note, {
+    'attr': {
+        'placeholder': "Note sur 5"
+    }
+})}} 
+{{form_row(formAvis.titre, {
+    'attr': {
+        'placeholder': "Titre du message"
+    }
+})}}
+{{form_row(formAvis.contenuMessageAvis, {
+    'attr': {
+        'placeholder': "Contenu du message"
+    }
+})}}
+
+<button type="submit" class="btn btn-success">
+    {% if isEditMode %}
+        Modifier le contact
+    {% else %}
+         Envoyer l'avis
+    {% endif %}
+    
+    </button>
+{{ form_end(formAvis) }}
+
+{% endblock %}

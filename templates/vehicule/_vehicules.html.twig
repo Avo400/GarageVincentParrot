@@ -1,0 +1,5 @@
+{% for vehicule in vehicules %}
+    
+      {# TODO SetCurrentVehicule(vehicule) #}
+    {% include "vehicule/_card.html.twig" with {vehicule: vehicule} only %}
+{% endfor %}

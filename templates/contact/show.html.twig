@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<section class="contact">
+
+        <article>
+            <h2> Utilisateur: </h2>
+            <h3>{{contact.user.email}} </h2>
+            <h3> Titre: </h3>
+            <div>{{contact.titre}}</div>
+            <h3> Contenu du message : </h3>
+            <div> {{contact.message}} </div>
+           
+        </article>
+       
+
+</section>
+
+<button  class="btn btn-primary"> <a href="{{ path('main') }}" style="text-decoration: none;">Retourner à la page d'accueil </a> </button>
+{% endblock %}

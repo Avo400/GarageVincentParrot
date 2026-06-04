@@ -1,0 +1,117 @@
+{% extends 'base_user.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+        
+
+        <h1> Réparations proposées </h1>
+        <table class="table table-hover">
+        <tr class="table-dark">
+            <td> Code</td>
+            <td>Prix moyen</td>
+            <td>Nom reparation </td>
+        </tr>
+        {% for reparation in reparations %} 
+            <tr class="table-secondary">
+                <td> {{ reparation.code }}</td>
+                <td>  {{ reparation.prixMoyen }} € </td>
+                <td> {{ reparation.nomReparation }} </td>
+            </tr>    
+        {% endfor %}
+        </table>
+        <h1> Quelques avis clients </h1>
+            <div class="row">
+                {% for avis in aviss %}
+                    <div class="col-md-6 col-lg-4 mb-3">
+                        <div class="card h-100">
+                            <div class="card-body p-3">
+
+                                <div class="mb-2">
+                                    {% for i in 1..5 %}
+                                        {% if i <= avis.note %}
+                                            <i class="fa fa-star text-warning"></i>
+                                        {% else %}
+                                            <i class="fa fa-star text-secondary"></i>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+
+                                <h6 class="card-title mb-2">
+                                    {{ avis.titre }}
+                                </h6>
+
+                                <p class="card-text small">
+                                    {{ avis.contenuMessageAvis|slice(0, 90) }}
+                                    {% if avis.contenuMessageAvis|length > 90 %}
+                                        ...
+                                    {% endif %}
+                                </p>
+
+                                <small class="text-muted">
+                                    {{ avis.user.firstname }}
+                                </small>
+
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+
+
+            <h1>Laisser un avis</h1>
+
+
+
+
+
+        
+
+       {% if is_granted('ROLE_USER')
+        and not is_granted('ROLE_EMPLOYE')
+        and not is_granted('ROLE_ADMIN') %}
+
+
+            {% form_theme formAvis 'bootstrap_4_layout.html.twig' %}
+                        {{ form_start(formAvis) }}
+                            {% if isOnMainPage == true %}
+                                {% do formAvis.user.setRendered() %}
+                            {% endif %}
+                            
+                        
+                            {{form_row(formAvis.note, {
+                                'attr': {
+                                    'placeholder': "Note sur 5"
+                                }
+                            })}}
+                            {{form_row(formAvis.titre, {
+                                'attr': {
+                                    'placeholder': "Sujet"
+                                }
+                            })}}
+                            {{form_row(formAvis.contenuMessageAvis, {
+                                'attr': {
+                                    'placeholder': "Ecrivez un message ici"
+                                }
+                            })}}
+                            {% if isOnMainPage == true %}
+                                    {% do formAvis.approved.setRendered() %}
+                            {% endif %}
+                            <button type="submit" class="btn btn-success">
+                                Enregistrer l'avis
+                            </button>
+                    {{ form_end(formAvis) }}
+
+        {% else %}
+
+            <p> Veuillez vous inscrire ou vous connecter afin de laisser un avis ! </p>
+        {% endif %}           
+
+
+{% endblock %}
