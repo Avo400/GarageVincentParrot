@@ -63,19 +63,18 @@ Les accès aux différentes fonctionnalités sont restreints selon le rôle de l
 ## Profils
 Voici des identifiants pour chaque rôle d'un compte utilisateur.
 
-- Compte admin : 
-avora@gmail.com
-avo1234
+- Compte admin 
+- Mail : avora@gmail.com
+- Mot de passe: avo1234
 
 - Compte employé : 
-quentin@gmail.com
-que123
+- Mail: quentin@gmail.com
+- Mot de passe: que123
 
 
 - Compte utilisateur:
-ABC Henri
-test@gmail.com
-azerty
+- Mail: test@gmail.com
+- Mot de passe : azerty
 
 
 ## Installation
