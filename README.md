@@ -76,6 +76,8 @@ Voici des identifiants pour chaque rôle d'un compte utilisateur.
 - Mail: test@gmail.com
 - Mot de passe : azerty
 
+## Aperçu
+Pour avoir un aperçu du site, veuillez accéder au dossier src > screenshots.
 
 ## Installation
 
