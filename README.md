@@ -60,6 +60,23 @@ Le projet implémente un système d'authentification et de gestion des rôles :
 
 Les accès aux différentes fonctionnalités sont restreints selon le rôle de l'utilisateur connecté.
 
+## Profils
+Voici des identifiants pour chaque rôle d'un compte utilisateur.
+
+- Compte admin : 
+avora@gmail.com
+avo1234
+
+- Compte employé : 
+quentin@gmail.com
+que123
+
+
+- Compte utilisateur:
+ABC Henri
+test@gmail.com
+azerty
+
 
 ## Installation
 
