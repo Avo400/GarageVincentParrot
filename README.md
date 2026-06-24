@@ -77,10 +77,10 @@ Voici des identifiants pour chaque rôle d'un compte utilisateur.
 - Mot de passe : azerty
 
 ## Aperçu
-Voici 3 liens de vidéos de démonstration du site.
-Test du site en tant qu'administrateur: https://youtu.be/hSWT9s0O1Wg
-Test en tant qu'employé: https://youtu.be/Zv-Fkp6KbNA
-Test en tant qu'utilisateur: https://youtu.be/yCVOzwY7tbI
+- Voici 3 liens de vidéos de démonstration du site.
+- Test du site en tant qu'administrateur: https://youtu.be/hSWT9s0O1Wg
+- Test en tant qu'employé: https://youtu.be/Zv-Fkp6KbNA
+- Test en tant qu'utilisateur: https://youtu.be/yCVOzwY7tbI
 
 ## Installation
 
